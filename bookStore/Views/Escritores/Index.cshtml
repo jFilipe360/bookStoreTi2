@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Escritor>
+
+@{
+    ViewData["Title"] = "Lista de Escritores";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>
+                        @Html.DisplayNameFor(model => model.URLFoto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeCompleto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Biografia)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle" src="@item.URLFoto" alt="@item.NomeCompleto" style="max-width: 150px"/>
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.NomeCompleto)
+                        </td>
+                        <td class="align-middle" width="30%">
+                            @Html.DisplayFor(modelItem => item.Biografia)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-controller="Escritores" asp-action="Edit" asp-route-id="@item.EscritorId"><i class="bi bi-pencil-square"></i>Editar</a> |
+                            <a class="btn btn-outline-info" asp-controller="Escritores" asp-action="Details" asp-route-id="@item.EscritorId"><i class="bi bi-eye"></i>Detalhes</a> |
+                            <a class="btn btn-danger" asp-controller="Escritores" asp-action="Delete" asp-route-id="@item.EscritorId"><i class="bi bi-trash"></i>Apagar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="position: fixed; right:25px; bottom:70px;" class="text-white">
+    <a asp-controller="Escritores" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i>Adicionar Escritor
+    </a>
+</div>

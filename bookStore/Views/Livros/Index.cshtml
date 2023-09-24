@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Livro>
+
+@{
+    ViewData["Title"] = "Lista de Livros";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 md-3">
+            <div class="card md-3 border border-dark" style="max-width: 550px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-black border border-dark bg-warning">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Titulo
+                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="border border-dark" src="@item.URlImagem" width="250px" height="400px" alt="@item.Titulo">
+                    </div>
+                    <div class="col-md-6 border border-start-0 border-dark">
+                        <div class="card-body">
+                            <p class="card-text"><b>Autor:</b>@item.Escritor.NomeCompleto</p>
+                            <p class="card-text">@item.Sinopse</p>
+                            <p class="card-text"><b>Categoria: </b>@item.LivroCategora</p>
+                            <p class="card-text"><b>Ano de Lançamento: </b>@item.DataLancamento</p>
+                            <p class="card-text"><b>Editora: </b>@item.Editora.NomeEditora</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer border border-dark">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary btn-small float-end"><i class="bi bi-eye-fill"></i>Detalhes</a>
+                                <a class="btn btn-success text-white btn-small"><i class="bi bi-cart-plus"></i>Adicionar ao Carrinho (Preço @item.Preco.ToString("C"))</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>  
+<div style="position: fixed; right:50px; bottom:70px;" class="text-white">
+    <a asp-controller="Livros" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i>Adicionar Livro
+    </a>
+</div>

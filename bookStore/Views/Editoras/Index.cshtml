@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Editora>
+
+@{
+    ViewData["Title"] = "Lista de Editoras";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.URLLogo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeEditora)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnoFundacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Slogan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Website)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img src="@item.URLLogo" alt="@item.NomeEditora" style="max-width: 100px" />
+                        </td>
+                        <td class="align-middle" width="2%">
+                            @Html.DisplayFor(modelItem => item.NomeEditora)
+                        </td>
+                        <td class="align-middle" width="2%">
+                            @Html.DisplayFor(modelItem => item.AnoFundacao)
+                        </td>
+                        <td class="align-middle" >
+                            @Html.DisplayFor(modelItem => item.Slogan)
+                        </td>
+                        <td class="align-middle">
+                            <button class="btn btn-success" onclick="location='@item.Website'">Website</button>
+                        </td>
+                        <td class="align-middle" width="35%">
+                            <a class="btn btn-outline-primary" asp-controller="Editoras" asp-action="Edit" asp-route-id="@item.EditoraId"><i class="bi bi-pencil-square"></i>Editar</a> |
+                            <a class="btn btn-outline-info" asp-controller="Editoras" asp-action="Details" asp-route-id="@item.EditoraId"><i class="bi bi-eye"></i>Detalhes</a> |
+                            <a class="btn btn-danger" asp-controller="Editoras" asp-action="Delete" asp-route-id="@item.EditoraId"><i class="bi bi-trash"></i>Apagar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 
+<div style="position: fixed; right:50px; bottom:70px;" class="text-white">
+    <a asp-controller="Editoras" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i>Adicionar Editora
+    </a>
+</div>

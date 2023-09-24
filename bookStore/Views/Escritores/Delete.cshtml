@@ -1,0 +1,52 @@
+﻿@model Escritor
+
+@{
+    ViewData["Title"] = "Apagar actor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Confirma que quer apagar? - @Model.NomeCompleto</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                    <div class="form-group text-center">
+                        <img class="border-info rounded-circle" style="max-width: 150px" id="ProfilePicturePreview" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="URLFoto" class="control-label"></label>
+                        <input asp-for="URLFoto" class="form-control" readonly />
+                        <span asp-validation-for="URLFoto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NomeCompleto" class="control-label"></label>
+                        <input asp-for="NomeCompleto" class="form-control" readonly />
+                        <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Biografia" class="control-label"></label>
+                        <input asp-for="Biografia" class="form-control" readonly />
+                        <span asp-validation-for="Biografia" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="EscritorId" />
+                            <input type="submit" value="Confirmar" class="btn btn-danger float-end" />
+                        </form>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Mostrar Todos</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#URLFoto").val();
+        })
+    </script>
+}

@@ -1,0 +1,37 @@
+html {
+  height: 100%;
+  font-size: 14px;
+  box-sizing:border-box;
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+    position:relative;
+    margin: 0;
+    min-height:100%;
+    padding-bottom: 6rem;
+    box-sizing:inherit;
+    background-color: gainsboro;
+}
+
+.barraNav{
+    background-color: gold;
+}
+
+main {
+}
+
+.footer {
+    text-align: center;
+    background-color: black;
+}
+
+.container-fluid {
+    height: 100%;
+}

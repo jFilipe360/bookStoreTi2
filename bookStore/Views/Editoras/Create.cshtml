@@ -1,0 +1,66 @@
+﻿@model Editora
+
+@{
+    ViewData["Title"] = "Adicionar Editora";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h4>Adicionar uma Nova Editora</h4>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group text-center">
+                        <img id="FotoPreview" style="height:300px;" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="URLLogo" class="control-label"></label>
+                        <input asp-for="URLLogo" class="form-control" />
+                        <span asp-validation-for="URLLogo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NomeEditora" class="control-label"></label>
+                        <input asp-for="NomeEditora" class="form-control" />
+                        <span asp-validation-for="NomeEditora" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnoFundacao" class="control-label"></label>
+                        <input asp-for="AnoFundacao" class="form-control" />
+                        <span asp-validation-for="AnoFundacao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slogan" class="control-label"></label>
+                        <input asp-for="Slogan" class="form-control" />
+                        <span asp-validation-for="Slogan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Website" class="control-label"></label>
+                        <input asp-for="Website" class="form-control" />
+                        <span asp-validation-for="Website" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Adicionar" class="btn btn-outline-success float-end" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Mostrar Todas</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('FotoPreview');
+            output.src = $("#URLLogo").val();
+        })
+
+        $("#URLLogo").on("change", function () {
+            var output = document.getElementById('FotoPreview');
+            output.src = $(this).val();
+        })
+    </script>
+}

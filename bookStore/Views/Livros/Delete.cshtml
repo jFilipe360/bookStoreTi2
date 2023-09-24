@@ -1,0 +1,76 @@
+﻿@model Livro
+
+@{
+    ViewData["Title"] = "Apagar livro";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Confirma que quer apagar? - @Model.Titulo</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="form-group text-center">
+                        <img id="FotoPreview" style="height:300px;" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="URlImagem" class="control-label"></label>
+                        <input asp-for="URlImagem" class="form-control" />
+                        <span asp-validation-for="URlImagem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Titulo" class="control-label"></label>
+                        <input asp-for="Titulo" class="form-control" />
+                        <span asp-validation-for="Titulo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Escritor" class="control-label"></label>
+                        <input asp-for="Escritor" class="form-control" />
+                        <span asp-validation-for="Escritor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Sinopse" class="control-label"></label>
+                        <input asp-for="Sinopse" class="form-control" />
+                        <span asp-validation-for="Sinopse" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LivroCategora" class="control-label"></label>
+                        <input asp-for="LivroCategora" class="form-control" />
+                        <span asp-validation-for="LivroCategora" class="text-danger"></span>
+                    </div>
+                <div class="form-group">
+                    <label asp-for="Preco" class="control-label"></label>
+                    <input asp-for="Preco" class="form-control" />
+                    <span asp-validation-for="Preco" class="text-danger"></span>
+                </div>
+                    <div class="form-group">
+                        <label asp-for="DataLancamento" class="control-label"></label>
+                        <input asp-for="DataLancamento" class="form-control" />
+                        <span asp-validation-for="DataLancamento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Editora" class="control-label"></label>
+                        <input asp-for="Editora" class="form-control" />
+                        <span asp-validation-for="Editora" class="text-danger"></span>
+                    </div>
+                <div class="form-group">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Confirmar" class="btn btn-danger float-end" />
+                    </form>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Mostrar Todos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#URlImagem").val();
+        })
+    </script>
+}
